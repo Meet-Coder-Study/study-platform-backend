@@ -16,10 +16,11 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Entity
 public class Feed {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "feed_id")
@@ -47,3 +48,4 @@ public class Feed {
         this.pubDate = pubDate;
     }
 }
+

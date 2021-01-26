@@ -8,14 +8,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.study.platform.member.domain.enums.Authority;
+import com.study.platform.member.domain.enums.DeveloperType;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Entity
 public class Member {
 
     @Id
