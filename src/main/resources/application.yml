@@ -1,6 +1,8 @@
 spring:
   profiles:
     active: local
+    include:
+      - oauth
   h2:
     console:
       enabled: true

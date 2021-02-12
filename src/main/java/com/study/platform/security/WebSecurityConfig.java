@@ -11,19 +11,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .csrf().disable()
-            .headers().frameOptions().sameOrigin();
+                .csrf().disable()
+                .headers().frameOptions().sameOrigin();
         http
-            .authorizeRequests()
-                .antMatchers("/", "/error", "/webjars/**").permitAll()
+                .authorizeRequests()
+                .antMatchers("/**").permitAll() // TODO: 2021/02/12 테스트를 위해 모든 권한 해제
                 .anyRequest().authenticated()
-            .and()
-            .exceptionHandling()
+                .and()
+                .exceptionHandling()
                 .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
-            .and()
-            .logout()
+                .and()
+                .logout()
                 .logoutSuccessUrl("/").permitAll()
-            .and()
-            .oauth2Login();
+                .and()
+                .oauth2Login();
     }
 }
