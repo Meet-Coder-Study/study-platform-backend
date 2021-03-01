@@ -21,6 +21,7 @@ public class IndexController {
 	public String index(Model model, @LoginUser SessionUser user) {
 		if (user != null){
 			model.addAttribute("userGithubId", user.getGithubId());
+			model.addAttribute("pictureUrl", user.getPictureUrl());
 		}
 		return "/index";
 	}

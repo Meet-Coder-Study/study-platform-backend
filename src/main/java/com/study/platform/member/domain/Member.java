@@ -32,6 +32,8 @@ public class Member {
 
     private String name;
 
+    private String pictureUrl;
+
     @Enumerated(value = EnumType.STRING)
     private DeveloperType developerType;
 
@@ -39,12 +41,14 @@ public class Member {
     private Authority authority;
 
     @Builder
-    public Member(Long id, String githubId, String email, String name, DeveloperType developerType,
+    public Member(Long id, String githubId, String email, String name, String pictureUrl,
+        DeveloperType developerType,
         Authority authority) {
         this.id = id;
         this.githubId = githubId;
         this.email = email;
         this.name = name;
+        this.pictureUrl = pictureUrl;
         this.developerType = developerType;
         this.authority = authority;
     }
