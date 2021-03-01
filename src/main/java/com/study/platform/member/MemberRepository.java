@@ -11,6 +11,5 @@ import com.study.platform.member.domain.Member;
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
-	@Query("select m from Member m where m.githubId = :githubId")
 	Optional<Member> findMemberByGithubId(String githubId);
 }
