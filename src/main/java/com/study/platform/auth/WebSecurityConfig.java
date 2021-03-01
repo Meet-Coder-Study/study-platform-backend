@@ -1,4 +1,4 @@
-package com.study.platform.security;
+package com.study.platform.auth;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -6,8 +6,14 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 
+import lombok.RequiredArgsConstructor;
+
 @Configuration
+@RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private final CustomOAuth2UserService customOAuth2UserService;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -24,6 +30,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .logout()
                 .logoutSuccessUrl("/").permitAll()
             .and()
-            .oauth2Login();
+            .oauth2Login()
+                .userInfoEndpoint()
+                .userService(customOAuth2UserService);
     }
 }

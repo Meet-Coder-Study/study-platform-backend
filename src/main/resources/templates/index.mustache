@@ -1,0 +1,19 @@
+{{>layout/header}}
+
+<h1>OAuth2 테스트</h1>
+
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-6">
+            {{#userGithubId}}
+            Logged in as: <span id="user">{{userGithubId}}</span>
+            <a href="/logout" class="btn btn-info active" role="button">Logout</a>
+            {{/userGithubId}}
+            {{^userGithubId}}
+            <a href="/oauth2/authorization/github" class="btn btn-success active" role="button">Github Login</a>
+            {{/userGithubId}}
+        </div>
+    </div>
+</div>
+
+{{>layout/footer}}

@@ -10,6 +10,7 @@ import javax.persistence.Id;
 
 import com.study.platform.member.domain.enums.Authority;
 import com.study.platform.member.domain.enums.DeveloperType;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,6 +26,8 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
+    private String githubId;
+
     private String email;
 
     private String name;
@@ -36,9 +39,10 @@ public class Member {
     private Authority authority;
 
     @Builder
-    public Member(Long id, String email, String name, DeveloperType developerType,
-            Authority authority) {
+    public Member(Long id, String githubId, String email, String name, DeveloperType developerType,
+        Authority authority) {
         this.id = id;
+        this.githubId = githubId;
         this.email = email;
         this.name = name;
         this.developerType = developerType;
