@@ -1,34 +1,35 @@
 package com.study.platform.blog.service;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.springframework.stereotype.Component;
-
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.FeedException;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.XmlReader;
 import com.study.platform.blog.service.dto.FeedDto;
+import org.springframework.stereotype.Component;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class FeedReaderImpl implements FeedReader {
 
     @Override
-    public List<FeedDto> getFeeds(URL rssUrl) throws IOException, FeedException {
-        SyndFeedInput syndFeedInput = new SyndFeedInput();
-        SyndFeed syndFeed = syndFeedInput.build(new XmlReader(rssUrl));
+    public List<FeedDto> getFeeds(final URL rssUrl) throws IOException, FeedException {
+        final SyndFeedInput syndFeedInput = new SyndFeedInput();
+        final SyndFeed syndFeed = syndFeedInput.build(new XmlReader(rssUrl));
 
-        List<SyndEntry> entries = syndFeed.getEntries();
+        final List<SyndEntry> feeds = syndFeed.getEntries();
 
-        return entries.stream().map(this::getFeed).collect(Collectors.toList());
+        return feeds.stream()
+                .map(this::getFeed)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public FeedDto getFeed(SyndEntry syndEntry) {
+    public FeedDto getFeed(final SyndEntry syndEntry) {
         try {
             return FeedDto.builder()
                     .title(syndEntry.getTitle())
@@ -36,9 +37,8 @@ public class FeedReaderImpl implements FeedReader {
                     .description(syndEntry.getDescription().getValue())
                     .pubDate(syndEntry.getPublishedDate())
                     .build();
-        } catch (Exception e) {
-            throw new IllegalArgumentException("test");
+        } catch (final Exception e) {
+            throw new IllegalArgumentException("해당 feed를 찾을수 없습니다.");
         }
     }
-
 }
