@@ -1,12 +1,14 @@
 package com.study.platform;
 
+import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@EnableBatchProcessing
 @SpringBootApplication
 public class PlatformApplication {
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         SpringApplication.run(PlatformApplication.class, args);
     }
 
