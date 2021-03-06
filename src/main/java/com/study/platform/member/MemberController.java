@@ -1,4 +1,4 @@
-package com.study.platform.member.domain;
+package com.study.platform.member;
 
 import java.util.Collections;
 import java.util.Map;
