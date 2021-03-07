@@ -6,20 +6,28 @@ import lombok.Builder;
 import lombok.Getter;
 
 import java.net.URL;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Getter
 public class FeedDto {
+
+    public FeedDto(Feed entity) {
+        this.title = entity.getTitle();
+        this.description = entity.getDescription();
+        this.link = entity.getLink();
+        this.pubDate = entity.getPubDate();
+    }
+
     private final String title;
 
-    private final URL link;
+    private final String link;
 
     private final String description;
 
-    private final Date pubDate;
+    private final LocalDateTime pubDate;
 
     @Builder
-    public FeedDto(final String title, final URL link, final String description, final Date pubDate) {
+    public FeedDto(final String title, final String link, final String description, final LocalDateTime pubDate) {
         this.title = title;
         this.link = link;
         this.description = description;

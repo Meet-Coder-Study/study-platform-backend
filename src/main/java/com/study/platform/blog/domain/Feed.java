@@ -6,8 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.net.URL;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -21,7 +20,7 @@ public class Feed {
 
     private String title;
 
-    private URL link;
+    private String link;
 
     @Lob
     private String description;
@@ -30,10 +29,11 @@ public class Feed {
     @JoinColumn(name = "blog_id")
     private Blog blog;
 
-    private Date pubDate;
+    @Column(name = "pub_date", columnDefinition = "DATE")
+    private LocalDateTime pubDate;
 
     @Builder
-    public Feed(final Long id, final String title, final URL link, final String description, final Blog blog, final Date pubDate) {
+    public Feed(final Long id, final String title, final String link, final String description, final Blog blog, final LocalDateTime pubDate) {
         this.id = id;
         this.title = title;
         this.link = link;
