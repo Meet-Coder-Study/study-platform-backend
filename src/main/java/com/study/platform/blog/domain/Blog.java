@@ -1,20 +1,12 @@
 package com.study.platform.blog.domain;
 
-import java.net.URL;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-
 import com.study.platform.member.domain.Member;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -26,7 +18,9 @@ public class Blog {
     @Column(name = "blog_id")
     private Long id;
 
-    private URL link;
+    private String link;
+
+    private String rssLink;
 
     @OneToOne
     @JoinColumn(name = "member_id")
@@ -35,10 +29,17 @@ public class Blog {
     private String title;
 
     @Builder
-    public Blog(Long id, URL link, Member member, String title) {
+    public Blog(final Long id, final String link, final String rssLink, final Member member, final String title) {
         this.id = id;
         this.link = link;
+        this.rssLink = rssLink;
         this.member = member;
+        this.title = title;
+    }
+
+    public void updateLink(final String blogLink, final String rssLink, final String title) {
+        this.link = blogLink;
+        this.rssLink = rssLink;
         this.title = title;
     }
 }
