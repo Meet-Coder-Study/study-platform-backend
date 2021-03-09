@@ -11,7 +11,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import com.rometools.rome.io.FeedException;
-import com.study.platform.blog.service.dto.FeedDto;
+import com.study.platform.blog.service.dto.FeedResponse;
 
 class FeedReaderImplTest {
 
@@ -20,7 +20,7 @@ class FeedReaderImplTest {
     @DisplayName("BlogFeed 전체 가져오는 테스트")
     @Test
     void getFeeds() throws IOException, FeedException {
-        List<FeedDto> feeds = feedReader.getFeeds(new URL("https://rutgo-letsgo.tistory.com/rss"));
+        List<FeedResponse> feeds = feedReader.getFeeds(new URL("https://rutgo-letsgo.tistory.com/rss"));
 
         assertAll(
                 () -> assertThat(feeds).isNotEmpty()

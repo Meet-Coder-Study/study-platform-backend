@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.io.FeedException;
-import com.study.platform.blog.service.dto.FeedDto;
+import com.study.platform.blog.service.dto.FeedResponse;
 
 @Service
 public interface FeedReader {
-    List<FeedDto> getFeeds(URL rssUrl) throws IOException, FeedException;
+    List<FeedResponse> getFeeds(URL rssUrl) throws IOException, FeedException;
 
-    FeedDto getFeed(SyndEntry syndEntry) throws IOException, FeedException;
+    FeedResponse getFeed(SyndEntry syndEntry) throws IOException, FeedException;
 }

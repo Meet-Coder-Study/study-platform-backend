@@ -1,7 +1,7 @@
 package com.study.platform.blog;
 
 import com.study.platform.blog.service.FeedApiService;
-import com.study.platform.blog.service.dto.FeedDto;
+import com.study.platform.blog.service.dto.FeedResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,15 +15,9 @@ public class FeedController {
 
     private final FeedApiService feedApiService;
 
-    /**
-     * @param pageable
-     * req ex) GET /feeds?page=0&size=10
-     * page default = 0
-     * size default = 20
-     */
     @GetMapping("/feeds")
-    public ResponseEntity<Page<FeedDto>> getFeeds(final Pageable pageable) {
-        final Page<FeedDto> feeds = feedApiService.getFeedsByPageable(pageable);
+    public ResponseEntity<Page<FeedResponse>> getFeeds(final Pageable pageable) {
+        final Page<FeedResponse> feeds = feedApiService.getFeedsByPageable(pageable);
         return ResponseEntity.ok(feeds);
     }
 

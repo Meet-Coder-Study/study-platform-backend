@@ -5,13 +5,12 @@ import com.study.platform.blog.domain.Feed;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.net.URL;
 import java.time.LocalDateTime;
 
 @Getter
-public class FeedDto {
+public class FeedResponse {
 
-    public FeedDto(Feed entity) {
+    public FeedResponse(Feed entity) {
         this.title = entity.getTitle();
         this.description = entity.getDescription();
         this.link = entity.getLink();
@@ -27,7 +26,7 @@ public class FeedDto {
     private final LocalDateTime pubDate;
 
     @Builder
-    public FeedDto(final String title, final String link, final String description, final LocalDateTime pubDate) {
+    public FeedResponse(final String title, final String link, final String description, final LocalDateTime pubDate) {
         this.title = title;
         this.link = link;
         this.description = description;

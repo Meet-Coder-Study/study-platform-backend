@@ -2,7 +2,7 @@ package com.study.platform.blog.service;
 
 import com.study.platform.blog.domain.Feed;
 import com.study.platform.blog.domain.FeedRepository;
-import com.study.platform.blog.service.dto.FeedDto;
+import com.study.platform.blog.service.dto.FeedResponse;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -26,7 +26,7 @@ class FeedApiServiceImplTest {
     private FeedRepository feedRepository;
 
     @Autowired
-    private FeedApiServiceImpl feedApiService;
+    private FeedApiService feedApiService;
 
     @AfterEach
     public void initialize() {
@@ -55,7 +55,7 @@ class FeedApiServiceImplTest {
         }
 
         Pageable pageable = PageRequest.of(page, size);
-        Page<FeedDto> list = feedApiService.getFeedsByPageable(pageable);
+        Page<FeedResponse> list = feedApiService.getFeedsByPageable(pageable);
 
         //then
         assertThat(list.getTotalPages()).isEqualTo(25 / size);
@@ -71,6 +71,5 @@ class FeedApiServiceImplTest {
                 Arguments.of(1, 5)
         );
     }
-
 
 }

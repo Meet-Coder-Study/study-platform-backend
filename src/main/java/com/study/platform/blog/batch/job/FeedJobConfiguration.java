@@ -3,7 +3,7 @@ package com.study.platform.blog.batch.job;
 import com.study.platform.blog.domain.Blog;
 import com.study.platform.blog.domain.Feed;
 import com.study.platform.blog.service.FeedReader;
-import com.study.platform.blog.service.dto.FeedDto;
+import com.study.platform.blog.service.dto.FeedResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -58,7 +58,7 @@ public class FeedJobConfiguration {
 
     private ItemProcessor<Blog, List<Feed>> feedItemProcessor() {
         return blog -> {
-            final List<FeedDto> feeds = feedReader.getFeeds(blog.getLink());
+            final List<FeedResponse> feeds = feedReader.getFeeds(blog.getLink());
 
             return feeds.stream()
                     .map(feedDto -> feedDto.toEntity(blog))
