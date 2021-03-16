@@ -5,7 +5,8 @@ import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.FeedException;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.XmlReader;
-import com.study.platform.blog.service.dto.FeedDto;
+import com.study.platform.blog.service.dto.FeedResponse;
+import com.study.platform.util.DateUtil;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -17,7 +18,7 @@ import java.util.stream.Collectors;
 public class FeedReaderImpl implements FeedReader {
 
     @Override
-    public List<FeedDto> getFeeds(final URL rssUrl) throws IOException, FeedException {
+    public List<FeedResponse> getFeeds(final URL rssUrl) throws IOException, FeedException {
         final SyndFeedInput syndFeedInput = new SyndFeedInput();
         final SyndFeed syndFeed = syndFeedInput.build(new XmlReader(rssUrl));
 
@@ -29,13 +30,13 @@ public class FeedReaderImpl implements FeedReader {
     }
 
     @Override
-    public FeedDto getFeed(final SyndEntry syndEntry) {
+    public FeedResponse getFeed(final SyndEntry syndEntry) {
         try {
-            return FeedDto.builder()
+            return FeedResponse.builder()
                     .title(syndEntry.getTitle())
-                    .link(new URL(syndEntry.getLink()))
+                    .link(syndEntry.getLink())
                     .description(syndEntry.getDescription().getValue())
-                    .pubDate(syndEntry.getPublishedDate())
+                    .pubDate(DateUtil.convertDateToLocalDateTime(syndEntry.getPublishedDate()))
                     .build();
         } catch (final Exception e) {
             throw new IllegalArgumentException("해당 feed를 찾을수 없습니다.");
