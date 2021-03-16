@@ -1,1 +1,4 @@
-rootProject.name = 'platform'
+rootProject.name = 'meetcoder'
+include 'batch'
+include 'web'
+
