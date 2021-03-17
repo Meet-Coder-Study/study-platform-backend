@@ -4,7 +4,7 @@ import com.meetcoder.batch.common.JpaItemListWriter;
 import com.meetcoder.web.blog.domain.Blog;
 import com.meetcoder.web.blog.domain.Feed;
 import com.meetcoder.web.blog.service.FeedReader;
-import com.meetcoder.web.blog.service.dto.FeedDto;
+import com.meetcoder.web.blog.service.dto.FeedResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -59,7 +59,7 @@ public class FeedJobConfiguration {
 
     private ItemProcessor<Blog, List<Feed>> feedItemProcessor() {
         return blog -> {
-            final List<FeedDto> feeds = feedReader.getFeeds(blog.getLink());
+            final List<FeedResponse> feeds = feedReader.getFeeds(blog.getRssLink());
 
             return feeds.stream()
                     .map(feedDto -> feedDto.toEntity(blog))

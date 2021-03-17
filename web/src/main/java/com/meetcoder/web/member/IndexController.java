@@ -23,6 +23,6 @@ public class IndexController {
 			model.addAttribute("userGithubId", user.getGithubId());
 			model.addAttribute("pictureUrl", user.getPictureUrl());
 		}
-		return "/index";
+		return "index";
 	}
 }

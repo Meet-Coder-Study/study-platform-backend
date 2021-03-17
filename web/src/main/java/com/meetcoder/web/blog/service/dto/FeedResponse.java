@@ -4,26 +4,31 @@ import com.meetcoder.web.blog.domain.Blog;
 import com.meetcoder.web.blog.domain.Feed;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-import java.net.URL;
-import java.util.Date;
+import java.time.LocalDateTime;
 
+@NoArgsConstructor
 @Getter
-public class FeedDto {
-    private final String title;
+public class FeedResponse {
+    private String title;
 
-    private final URL link;
+    private String link;
 
-    private final String description;
+    private String description;
 
-    private final Date pubDate;
+    private LocalDateTime pubDate;
 
     @Builder
-    public FeedDto(final String title, final URL link, final String description, final Date pubDate) {
+    public FeedResponse(final String title, final String link, final String description, final LocalDateTime pubDate) {
         this.title = title;
         this.link = link;
         this.description = description;
         this.pubDate = pubDate;
+    }
+
+    public static FeedResponse of(final Feed feed) {
+        return new FeedResponse(feed.getTitle(), feed.getLink(), feed.getDescription(), feed.getPubDate());
     }
 
     public Feed toEntity(final Blog blog) {
