@@ -1,3 +1,4 @@
 [submodule "config"]
 	path = config
 	url = https://github.com/Meet-Coder-Study/study-platform-submodule.git
+	branch = main
