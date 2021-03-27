@@ -1,4 +1,4 @@
-package com.meetcoder.web.platform.blog;
+package com.meetcoder.web.blog.controller;
 
 import com.meetcoder.web.blog.service.FeedApiService;
 import com.meetcoder.web.blog.service.dto.FeedResponse;
