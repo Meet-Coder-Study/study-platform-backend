@@ -6,3 +6,4 @@ spring:
     include:
       - oauth
       - db
+      - log
