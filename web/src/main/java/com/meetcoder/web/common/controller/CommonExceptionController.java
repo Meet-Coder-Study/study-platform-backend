@@ -26,6 +26,7 @@ public class CommonExceptionController {
         log.error("Exception occurred : " + e);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
+
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<String> handleIllegalArgumentException(final IllegalArgumentException e) {
         log.error("Exception occurred : " + e);
