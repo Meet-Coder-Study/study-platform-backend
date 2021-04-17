@@ -15,7 +15,7 @@ public class FeedController {
 
     private final FeedApiService feedApiService;
 
-    @GetMapping("/feeds")
+    @GetMapping("/api/feeds")
     public ResponseEntity<Page<FeedResponse>> getFeeds(final Pageable pageable) {
         final Page<FeedResponse> feeds = feedApiService.getFeedsByPageable(pageable);
         return ResponseEntity.ok(feeds);

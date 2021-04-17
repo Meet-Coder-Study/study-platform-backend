@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MemberController {
 
-	@GetMapping("/members")
+	@GetMapping("/api/members")
 	public Map<String, Object> member(@AuthenticationPrincipal OAuth2User principal) {
 		return Collections.singletonMap("name", principal.getAttribute("login"));
 	}

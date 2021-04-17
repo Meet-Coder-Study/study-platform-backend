@@ -5,5 +5,5 @@ spring:
     active: local
     include:
       - oauth
-      - db
-      - log
+      - local
+      - prod

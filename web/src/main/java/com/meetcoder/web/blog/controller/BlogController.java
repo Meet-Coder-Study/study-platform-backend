@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/blogs")
+@RequestMapping("/api/blogs")
 @RequiredArgsConstructor
 public class BlogController {
     private final BlogService blogService;
