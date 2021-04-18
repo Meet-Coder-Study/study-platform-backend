@@ -1,7 +1,7 @@
 task copyConfigSettings(type: Copy) {
     description = "Copy application-*.yml from config"
     from '../config'
-    into 'web/src/main/resources/'
+    into '../web/src/main/resources/'
 }
 
 dependencies {
